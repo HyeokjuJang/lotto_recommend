@@ -1,0 +1,343 @@
+<?php
+include './php/functions.php';
+?>
+<html lang="ko">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Lotto. 확률분포기반 로또번호추천 서비스</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/business-casual.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3085298641161574",
+        enable_page_level_ads: true
+      });
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-60243024-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-60243024-2');
+    </script>
+
+</head>
+
+<body>
+
+    <div class="brand">Simple Lotto</div>
+    <div class="address-bar">확률분포기반 로또번호추천 서비스</div>
+    <div class="container">
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12 text-center">
+                    <h2 class="brand-before">
+                        <small>모두 동일한 분포</small>
+                    </h2>
+                    <h2 class="brand-name">알아서 추천</h2>
+                    <button class="btn btn-warning" onclick="display_yes(1)">추천!</button>
+                    <div id = "num1" style="display: none"><?php for($i=0;$i<6;$i++){echo $num1[$i]." ";}?></div>
+                    <hr class="tagline-divider">
+                    <h2>
+                        <small>
+                            <strong>uniform 분포</strong>
+                            확률 1/800만
+                        </small>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div align="center">
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- 로터리 -->
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:300px;height:250px"
+               data-ad-client="ca-pub-3085298641161574"
+               data-ad-slot="5679773498"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+          <br><br>
+        </div>
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12 text-center">
+                    <h2 class="brand-before">
+                        <small>안나왔던게 잘나오겠지..</small>
+                    </h2>
+                    <h2 class="brand-name">안나온게 잘나오는 분포</h2>
+                    <button class="btn btn-warning" onclick="display_yes(2)">추천!</button>
+                    <div id = "num2" style="display: none"><?php for($i=0;$i<6;$i++){echo $num2[$i]." ";}?></div>
+                    <hr class="tagline-divider">
+                    <h2>
+                        <small>
+                            <strong>매 회차 달라지는 분포</strong>
+                        </small>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12 text-center">
+                    <h2 class="brand-before">
+                        <small>잘 나오던게 잘나오겠지..</small>
+                    </h2>
+                    <h2 class="brand-name">잘나온게 잘나오는 분포</h2>
+                    <button class="btn btn-warning" onclick="display_yes(3)">추천!</button>
+                    <div id = "num3" style="display: none"><?php for($i=0;$i<6;$i++){echo $num3[$i]." ";}?></div>
+                    <hr class="tagline-divider">
+                    <h2>
+                        <small>
+                            <strong>매 회차 달라지는 분포</strong>
+                        </small>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12 text-center">
+                    <h2 class="brand-before">
+                        <small>딥러닝이 대세라던데..</small>
+                    </h2>
+                    <h2 class="brand-name">딥러닝 분포</h2>
+                    <button class="btn btn-warning" onclick="display_yes(4)">추천!</button>
+                    <div id = "num4" style="display: none"><?php for($i=0;$i<6;$i++){echo $num4[$i]." ";}?></div>
+                    <hr class="tagline-divider">
+                    <h2>
+                        <small>
+                            <strong>인공신경망으로 분석한 분포(미완성)</strong>
+                        </small>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div align="center">
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- 로터리 -->
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:300px;height:250px"
+               data-ad-client="ca-pub-3085298641161574"
+               data-ad-slot="5679773498"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+          <br><br>
+        </div>
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12 text-center">
+                    <h2 class="brand-before">
+                        <small>이번엔 1번대가 잘나올거같은데..</small>
+                    </h2>
+                    <h2 class="brand-name">1번대 위주 분포</h2>
+                    <button class="btn btn-warning" onclick="display_yes(5)">추천!</button>
+                    <div id = "num5" style="display: none"><?php for($i=0;$i<6;$i++){echo $num5[$i]." ";}?></div>
+                    <hr class="tagline-divider">
+                    <h2>
+                        <small>
+                            <strong>1번대를 중심으로 정규분포</strong>
+                        </small>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12 text-center">
+                    <h2 class="brand-before">
+                        <small>이번엔 10번대가 잘나올거같은데..</small>
+                    </h2>
+                    <h2 class="brand-name">10번대 위주 분포</h2>
+                    <button class="btn btn-warning" onclick="display_yes(6)">추천!</button>
+                    <div id = "num6" style="display: none"><?php for($i=0;$i<6;$i++){echo $num6[$i]." ";}?></div>
+                    <hr class="tagline-divider">
+                    <h2>
+                        <small>
+                            <strong>10번대를 중심으로 정규분포</strong>
+                        </small>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12 text-center">
+                    <h2 class="brand-before">
+                        <small>이번엔 20번대가 잘나올거같은데..</small>
+                    </h2>
+                    <h2 class="brand-name">20번대 위주 분포</h2>
+                    <button class="btn btn-warning" onclick="display_yes(7)">추천!</button>
+                    <div id = "num7" style="display: none"><?php for($i=0;$i<6;$i++){echo $num7[$i]." ";}?></div>
+                    <hr class="tagline-divider">
+                    <h2>
+                        <small>
+                            <strong>20번대를 중심으로 정규분포</strong>
+                        </small>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12 text-center">
+                    <h2 class="brand-before">
+                        <small>이번엔 30번대가 잘나올거같은데..</small>
+                    </h2>
+                    <h2 class="brand-name">30번대 위주 분포</h2>
+                    <button class="btn btn-warning" onclick="display_yes(8)">추천!</button>
+                    <div id = "num8" style="display: none"><?php for($i=0;$i<6;$i++){echo $num8[$i]." ";}?></div>
+                    <hr class="tagline-divider">
+                    <h2>
+                        <small>
+                            <strong>30번대를 중심으로 정규분포</strong>
+                        </small>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12 text-center">
+                    <h2 class="brand-before">
+                        <small>이번엔 40번대가 잘나올거같은데..</small>
+                    </h2>
+                    <h2 class="brand-name">40번대 위주 분포</h2>
+                    <button class="btn btn-warning" onclick="display_yes(9)">추천!</button>
+                    <div id = "num9" style="display: none"><?php for($i=0;$i<6;$i++){echo $num9[$i]." ";}?></div>
+                    <hr class="tagline-divider">
+                    <h2>
+                        <small>
+                            <strong>40번대를 중심으로 정규분포</strong>
+                        </small>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div align="center">
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- 로터리 -->
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:300px;height:250px"
+               data-ad-client="ca-pub-3085298641161574"
+               data-ad-slot="5679773498"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+          <br><br>
+        </div>
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12 text-center">
+                    <h2 class="brand-before">
+                        <small>낮은 숫자 중심 분포</small>
+                    </h2>
+                    <h2 class="brand-name">이번엔 낮은숫자!</h2>
+                    <button class="btn btn-warning" onclick="display_yes(10)">추천!</button>
+                    <div id = "num10" style="display: none"><?php for($i=0;$i<6;$i++){echo $num10[$i]." ";}?></div>
+                    <hr class="tagline-divider">
+                    <h2>
+                        <small>
+                            <strong>낮은 숫자를 중심으로 정규분포</strong>
+                        </small>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12 text-center">
+                    <h2 class="brand-before">
+                        <small>높은 숫자 중심 분포</small>
+                    </h2>
+                    <h2 class="brand-name">이번엔 높은숫자!</h2>
+                    <button class="btn btn-warning" onclick="display_yes(11)">추천!</button>
+                    <div id = "num11" style="display: none"><?php for($i=0;$i<6;$i++){echo $num11[$i]." ";}?></div>
+                    <hr class="tagline-divider">
+                    <h2>
+                        <small>
+                            <strong>높은 숫자를 중심으로 정규분포</strong>
+                        </small>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">이 서비스는
+                        <strong>당첨을 보장하지 않습니다.</strong>
+                    </h2>
+                    <hr>
+                    <p>로또는 어떠한 확률 분포를 따른다라고 생각을 하신다면 이 서비스를 이용하시는 것이 당첨확률을 높이시는데 도움이 됩니다. 다양한 확률분포를 제공하며 원하시는대로 추천받으실 수 있습니다.</p>
+                    <p>제공되는 확률분포의 평균이나 분산 등 세부정보는 공개하지 않으며 차후 조정할 수 있는 서비스를 제공 예정에 있습니다.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>Copyright &copy; entaline 2018</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    function display_yes(i){
+      document.getElementById('num'+i).style.display = 'block';
+    }
+    </script>
+
+</body>
+
+</html>
